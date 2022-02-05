@@ -5,7 +5,7 @@
 - Windows 10 the assumption being that this walkthrough was developed using Windows 10 and Window's Subsytem for Linux - Debian for the purposes of compiling our malware.
 - Python version 3
 - Powershell no specific version is needed however we want to simulate general adversarial conditions so lets allow script execution.
-- .NET Framework as long as you have the csc.exe utility for compiling C# applications you should be fine.
+- .NET Framework 6 I am using the dotnet cli utility for compiling our C# application since we only need one class.
 - Compiled Programming Language that can export applications as dynamic link libraries such as Go/C/C++/Nim
 - sRDI: https://github.com/monoxgas/sRDI For generating position independent shellcode from malicious DLL
 - Linux: The one TRUE operating system, any Linux distro will do, including Windows Subsystem for Linux (This is optional)
@@ -298,7 +298,7 @@ We use VirtualAllocEx because we are allocating memory in another process' addre
 We can compile this C# program into a .NET assembly using the following command:
 
 ```
-csc.exe /out:Injection.exe Injection.cs 
+dotnet build
 ```
 
 Now that we have a C# .NET binary that will load our trojan into memory, you may wonder how we will deliver it to our target.
